@@ -33,7 +33,7 @@ function handleSearch(query) {
 }
 function getWeather(query) {
   return fetch(
-    `${api_url}/?${query}&units=metric&appid=47eb3373f62109aa49c6d644e4cf2d9f`
+    `${api_url}/?${query}&units=metric&appid=`
   ).then(handleResponse);
 
   function handleResponse(response) {
