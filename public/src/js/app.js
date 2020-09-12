@@ -28,7 +28,7 @@ btn.addEventListener("click", () => {
 });
 
 function getWeather(query) {
-  return fetch(`${api_url}/?q=${query}&units=metric&appid=`).then(handleResponse);
+  return fetch(`${api_url}/?q=${query}&units=metric&appid=envkey`).then(handleResponse);
 
   function handleResponse(response) {
     return response.text().then((text) => {
