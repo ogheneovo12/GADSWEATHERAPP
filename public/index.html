@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#358DC5">
+    <meta name="description" content="ThudLight check current weather at lightening speed, plan well">
+    <meta name="keywords" content="weather app, rain, cloud, current weather state">
+    <meta name="image" content="./icon.png">
+    <meta property="og:title" content="ThudLight">
+    <meta property="og:description" content="ThudLight check current weather at lightening speed, plan well">
+    <meta property="og:image" content="./icon.png">
+    <meta property="og:url"  content="./icon.png">
+    <meta name="twitter:card" content="lightening speed to current weather">
+    <link rel="stylesheet" href="./src/css/app.css" />
+    <link rel="stylesheet" href="./src/css/alert.css" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png" >
+    <title>ThudLight</title>
+</head>
+
+<body>
+   <header>
+       <div class="header__bg flex" role="banner">
+           <h2 id="greeting"></h2>
+           <div class="flex" role="search">
+             <label for="inputui" aria-hidden="true">city</label>
+             <input type="text" placeholder="enter cityname" id="inputui" name="city" tabindex="0"  role="searchbox" title="enter city">
+             <button id="btnget" tabindex="0" role="button">check</button>
+            </div>
+       </div>
+   </header>
+   <main class='flex'>
+       <aside class="history" role="log"> 
+           <div class="minor_main">
+
+           </div>
+            <div class="mini_output shadow" id="default">
+                <div class="mini_output__inner_default flex">
+                   <p>+</p>
+                   <p>search to add or <span>click</span></p>
+                </div>
+            </div>
+       </aside>
+       <article class="output_region">
+           <div class="output flex shadow">
+                 <div class="output__inner flex">
+                    <div class="output__main__icon">
+                        <img id="iconel" src="./icon.png" alt="weather icon"/>
+                      </div>
+                      <div class="output__inner__text flex">
+                            <span class="output__text_temperature"><span  id="temp">0</span><sup>&#176;c</sup></span>
+                            <span class="output__text_city">
+                                <p>
+                                  <span  id="city">ThuderLight</span>
+                                  <span>,</span>
+                                  <span   id="country"> <i>Weather app</i></span>
+                                </p>
+                            </span>
+                            <p id="desc"></p>
+                            
+                      </div>
+                    
+                 </div>
+                 <ul class="other_details output_further">
+                    <li id="time">no searches</li> 
+                    <li id="humidity">humidity 0</li> 
+                    <li id="min-max">
+                        <span><span class="range">0</span><sup>&#176;c</sup></span>
+                        <small>-</small>
+                        <span><span class="range">0</span><sup>&#176;c</sup></span>
+                    </li> 
+                 </ul>
+           </div>
+        <div class="forecast_container">
+            <h2>Two days forcast</h2>
+            <div class="forecast_wrapper flex">
+            <div class="forcast flex shadow">
+                <span class="forcast__text flex">
+                    <span class="forcast__icon">$$$</span>
+                    <span class="day">
+                    <p class="theday">monday</p>
+                    <p><i>cloudy</i></p>
+                </span>
+                </span>
+                <span class="forcast__temperature">
+                    30
+                </span>
+            </div>
+            <div class="forcast flex shadow">
+                <span class="forcast__text flex">
+                    <span class="forcast__icon">$$$</span>
+                    <span class="day">
+                    <p class="theday">monday</p>
+                    <p><i>cloudy</i></p>
+                </span>
+                </span>
+                <span class="forcast__temperature">
+                    30
+                </span>
+            </div>
+            </div>
+        </div>
+        <div class="feedback shadow">
+            <div class="feedback__title">
+               feedback
+            </div>
+            <p role="status">
+               this is an upcoming feature, to give you advice about hosting an oudoor event.
+            </p>
+        </div>
+       </article>
+   </main>
+   <div class="alert" role="alertdialog">
+    <p class="alertMessage" role="alert"></p>
+   <span className="delete"><i className="fa fa-times"></i></span>
+  </div>
+  <script src="./src/js/index.js"></script>
+   <script src="./src/js/countries.js" defer></script>
+   <script src="./src/js/helpers.js" defer></script>
+   <script src="./src/js/ui.js" defer></script>
+   <script src="./src/js/app.js" defer></script>
+</body>
+
+</html>

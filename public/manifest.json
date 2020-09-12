@@ -1,0 +1,22 @@
+{
+    "name": "Thudlight weather app",
+    "short_name": "Thudlight",
+    "start_url": "index.html",
+    "scope": "./",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "465x465",
+        "type": "image/png"
+      },
+      {
+        "src": "icon513x513.png",
+        "sizes": "513x513",
+        "type": "image/png",
+        "purpose":"any maskable"
+      }
+    ],
+    "theme_color": "#358DC5",
+    "background_color": "#fff",
+    "display": "standalone"
+  }
