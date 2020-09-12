@@ -65,7 +65,7 @@
         alert.classList.remove(`tr`);
     }
     static setIcon(icon){
-      iconEl.setAttribute("src",`http://openweathermap.org/img/w/${icon}.png`);
+      iconEl.setAttribute("src",`https://openweathermap.org/img/w/${icon}.png`);
     }
     static removeLoading(){
        output.removeChild(loadWrapper);
@@ -88,7 +88,7 @@
       minor.setAttribute("class","mini_output shadow")
       minor.innerHTML= `<div class="mini_output__main flex">
                 <div class="mini_output__main__icon cloud">
-                  <img src="http://openweathermap.org/img/w/${data.icon}.png" alt="weather icon"/>
+                  <img src="https://openweathermap.org/img/w/${data.icon}.png" alt="weather icon"/>
                 </div>
                 <div class="mini_output__text flex">
                       <span class="mini_output__text_temperature">${data.temperature}</span>
