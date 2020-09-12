@@ -1,3 +1,5 @@
+
+
 class StorageHelper {
   static itemName = "weatherSearch";
   static SaveData(data) {
@@ -50,9 +52,26 @@ function getCountry(countryCode) {
 function getGreeting(){
   const now = new  Date().toLocaleTimeString().split(' ')
   if(now[1]== "AM")return "GOOD MORNING";
-  if(period == "PM"){
+  if(now[1]== "PM"){
     const hour = +now[0].split(":")[0]
     if(hour == 12 || hour < 4)return "GOOD AFTERNOON";
     return "GOOD EVENING"
   }
+}
+
+function getUserLocation(){
+  return new Promise((resolve, reject)=>{
+     if(!navigator.geolocation){
+       return reject("sorry geolocation is not suppoerte")
+     }
+     navigator.geolocation.getCurrentPosition(success, error);
+     function success(position){
+      const latitude  = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      return resolve({latitude,longitude})
+     }
+     function error(error){
+        return reject("sorry we couldn't get your location, but you can search for it");
+     }
+  })
 }

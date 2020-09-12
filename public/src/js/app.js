@@ -8,27 +8,32 @@ const btn = document.querySelector("#btnget");
 //then submit
 initApp();
 
-btn.addEventListener("click", () => {
+btn.addEventListener("click", (e) => {
+ e.preventDefault();
   const query = `${input.value}`;
   if (!!!query) return UI.errorAlert("please enter a valid city");
-  UI.displayLoading("main");
-  getWeather(query)
-    .then(
-      (data) => {
-        UI.removeLoading();
-        UI.displayWeatherResult(data);
-        updateSearchesUi();
-      },
-      (error) => {
-        UI.removeLoading();
-        UI.errorAlert(error);
-      }
-    )
-    .catch(console.log);
+  handleSearch(`q=${query}`);
 });
 
+
+function handleSearch(query){
+    UI.displayLoading("main");
+    getWeather(query)
+      .then(
+        (data) => {
+          UI.removeLoading();
+          UI.displayWeatherResult(data);
+          updateSearchesUi();
+        },
+        (error) => {
+          UI.removeLoading();
+          UI.errorAlert(error);
+        }
+      )
+      .catch(console.log);
+}
 function getWeather(query) {
-  return fetch(`${api_url}/?q=${query}&units=metric&appid=envkey`).then(handleResponse);
+  return fetch(`${api_url}/?${query}&units=metric&appid=`).then(handleResponse);
 
   function handleResponse(response) {
     return response.text().then((text) => {
@@ -54,15 +59,22 @@ function getWeather(query) {
 function initApp() {
   UI.greet();
   UI.displayLoading();
-  const searches = StorageHelper.getData();
-  if (!searches || !searches.length) {
-    //get user geolocation, make request based on geolocation
+  getUserLocation().then(location=>{
+      console.log(location)
+      handleSearch(`lat=${location.latitude}&lon=${location.longitude}`)
+  }).catch(error=>{
+    UI.errorAlert(error.message)
+    const searches = StorageHelper.getData();
+    if (!searches || !searches.length) {
+      //get user geolocation, make request based on geolocation
+      UI.removeLoading();
+      return;
+    }
+    updateSearchesUi();
+    UI.displayWeatherResult(searches.pop());
     UI.removeLoading();
-    return;
-  }
-  updateSearchesUi();
-  UI.displayWeatherResult(searches.pop());
-  UI.removeLoading();
+  })
+  
 }
 
 function updateSearchesUi(){
